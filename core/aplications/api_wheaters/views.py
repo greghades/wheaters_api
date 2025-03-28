@@ -1,5 +1,6 @@
-from aplications.api_wheaters.api.cities import get_cities
-from aplications.api_wheaters.api.weather_cities import get_cities_and_temp
+
+from aplications.api_wheaters.api.services import get_cities_data,get_wheater_data
+
 from rest_framework import status
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
@@ -20,7 +21,7 @@ class Get_Wheaters_Cities(ListAPIView):
 
             return Response(data, code)
 
-        cities = get_cities(slug_city)
-        response_wheaters = get_cities_and_temp(cities)
+        cities = get_cities_data(slug_city)
+        wheaters = get_wheater_data(cities)
 
-        return Response(response_wheaters, status.HTTP_200_OK)
+        return Response(wheaters, status.HTTP_200_OK)
