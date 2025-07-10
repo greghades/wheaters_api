@@ -22,6 +22,6 @@ class Get_Wheaters_Cities(ListAPIView):
             return Response(data, code)
 
         cities = get_cities_data(slug_city)
-        wheaters = get_wheater_data(cities)
+        wheaters = get_wheater_data(cities,slug_city)
 
         return Response(wheaters, status.HTTP_200_OK)
